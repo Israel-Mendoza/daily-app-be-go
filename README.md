@@ -122,6 +122,25 @@ The server will start on the port defined in your `.env` file (default: 8080).
 - `GET /sessions` - List all daily sessions
 - `POST /sessions` - Log a new daily session
 
+## Testing
+
+The project includes unit tests and integration tests for the service layer, utilizing `testify/mock` for dependency injection and `testify/assert` for verifications.
+
+To run all tests:
+```bash
+go test ./internal/service/...
+```
+
+For a more detailed output:
+```bash
+go test -v ./internal/service/...
+```
+
+To check test coverage:
+```bash
+go test -cover ./internal/service/...
+```
+
 ## Development
 
 ### Regenerating Database Code
