@@ -122,6 +122,10 @@ The server will start on the port defined in your `.env` file (default: 8080).
 - `GET /sessions` - List all daily sessions
 - `POST /sessions` - Log a new daily session
 
+## CI/CD
+
+The project uses GitHub Actions for Continuous Integration. Every push or pull request to the `main` branch triggers the build and test suite.
+
 ## Testing
 
 The project includes unit tests and integration tests for the service layer, utilizing `testify/mock` for dependency injection and `testify/assert` for verifications.
