@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    name: Build and Test
+    name: Build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -26,5 +26,42 @@ jobs:
       - name: Build
         run: go build -v ./...
 
-      - name: Run Tests
+  unit-tests:
+    name: Unit Tests
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.25.0'
+          cache: true
+
+      - name: Install dependencies
+        run: go mod tidy
+
+      - name: Run Unit Tests
         run: go test -v ./internal/service/...
+
+  integration-tests:
+    name: Integration Tests
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.25.0'
+          cache: true
+
+      - name: Install dependencies
+        run: go mod tidy
+
+      - name: Run Integration Tests
+        run: go test -v ./internal/repository/tests/...

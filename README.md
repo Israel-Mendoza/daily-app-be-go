@@ -145,6 +145,17 @@ To check test coverage:
 go test -cover ./internal/service/...
 ```
 
+### Integration Tests
+The project uses [Testcontainers for Go](https://golang.testcontainers.org/) to run integration tests against a real PostgreSQL instance.
+
+**Prerequisites:**
+- Docker must be installed and running on your machine.
+
+To run integration tests:
+```bash
+go test -v ./internal/repository/tests/...
+```
+
 ## Development
 
 ### Regenerating Database Code
